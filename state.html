@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>State Dashboard | Explore India with Shiv</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f0e6;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: linear-gradient(45deg, #e67e22, #d35400);
+        }
+
+        .navbar-brand {
+            color: #fff !important;
+            font-weight: 700;
+        }
+
+        /* HEADER */
+        .state-header {
+            padding: 40px 20px;
+            text-align: center;
+            background: linear-gradient(to right, #fff3e0, #ffe0b2);
+        }
+
+        .state-header h1 {
+            color: #7b3f00;
+            font-weight: 800;
+        }
+
+        .state-header p {
+            color: #555;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* CATEGORY GRID */
+        .category-section {
+            padding: 40px 20px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .category-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .category-card h4 {
+            color: #d35400;
+            font-weight: 700;
+        }
+
+        .category-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* FOOTER */
+        .footer-note {
+            text-align: center;
+            padding: 25px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Explore India with Shiv</a>
+    </div>
+</nav>
+
+<!-- STATE HEADER -->
+<div class="state-header">
+    <h1 id="stateName">State Name</h1>
+    <p>
+        Discover the best places, food, culture, history, and traditions
+        of <strong id="stateNameInline">this beautiful state</strong>.
+    </p>
+</div>
+
+<!-- CATEGORY SECTION -->
+<div class="category-section container">
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="category-card" onclick="goToDetails('places')">
+                <div class="category-icon">🏞</div>
+                <h4>Best Places</h4>
+                <p>Famous tourist attractions and hidden gems</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card" onclick="goToDetails('food')">
+                <div class="category-icon">🍽</div>
+                <h4>Best Food</h4>
+                <p>Iconic dishes and must-try local food</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card" onclick="goToDetails('shopping')">
+                <div class="category-icon">🛍</div>
+                <h4>Shopping Places</h4>
+                <p>Local markets and famous shopping streets</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card" onclick="goToDetails('culture')">
+                <div class="category-icon">🎭</div>
+                <h4>Culture & History</h4>
+                <p>Traditions, festivals, and heritage</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="category-card" onclick="goToDetails('dishes')">
+                <div class="category-icon">🍛</div>
+                <h4>Local Dishes</h4>
+                <p>Traditional flavors unique to the state</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-note">
+    Explore India • One State at a Time 🇮🇳
+</div>
+
+<script>
+    // Get state from URL
+    const params = new URLSearchParams(window.location.search);
+    const state = params.get("state") || "India";
+
+    document.getElementById("stateName").innerText = state;
+    document.getElementById("stateNameInline").innerText = state;
+
+    function goToDetails(type) {
+        window.location.href =
+            `details.html?state=${encodeURIComponent(state)}&type=${type}`;
+    }
+</script>
+
+</body>
+</html>
